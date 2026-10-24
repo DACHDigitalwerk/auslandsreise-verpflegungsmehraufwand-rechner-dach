@@ -5,7 +5,7 @@ import sys
 
 
 def test_cli_help():
-    cmd = [sys.executable, "automation/github_staging/repo23/auslandsreise_dach/cli.py", "--help"]
+    cmd = [sys.executable, "-m", "auslandsreise_dach.cli", "--help"]
     res = subprocess.run(cmd, capture_output=True, text=True)
     assert res.returncode == 0
     assert "dach-ausland" in res.stdout
@@ -13,7 +13,7 @@ def test_cli_help():
 
 
 def test_cli_list_destinations():
-    cmd = [sys.executable, "automation/github_staging/repo23/auslandsreise_dach/cli.py", "--list-destinations"]
+    cmd = [sys.executable, "-m", "auslandsreise_dach.cli", "--list-destinations"]
     res = subprocess.run(cmd, capture_output=True, text=True)
     assert res.returncode == 0
     assert "BMF Auslandstagegelder" in res.stdout
@@ -22,7 +22,7 @@ def test_cli_list_destinations():
 
 
 def test_cli_search():
-    cmd = [sys.executable, "automation/github_staging/repo23/auslandsreise_dach/cli.py", "--search", "wien"]
+    cmd = [sys.executable, "-m", "auslandsreise_dach.cli", "--search", "wien"]
     res = subprocess.run(cmd, capture_output=True, text=True)
     assert res.returncode == 0
     assert "OESTERREICH_WIEN" in res.stdout
@@ -32,7 +32,8 @@ def test_cli_search():
 def test_cli_calculation():
     cmd = [
         sys.executable,
-        "automation/github_staging/repo23/auslandsreise_dach/cli.py",
+        "-m",
+        "auslandsreise_dach.cli",
         "--destination", "UK_LONDON",
         "--days", "3",
         "--breakfasts", "2",
@@ -47,7 +48,8 @@ def test_cli_calculation():
 def test_cli_json_output():
     cmd = [
         sys.executable,
-        "automation/github_staging/repo23/auslandsreise_dach/cli.py",
+        "-m",
+        "auslandsreise_dach.cli",
         "--destination", "FRANKREICH_PARIS",
         "--days", "2",
         "--json",
