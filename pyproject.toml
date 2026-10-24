@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "auslandsreise-dach"
+version = "1.0.0"
+description = "DACH Auslandstagegeld- & Reisekostenpauschalen-Rechner 2026 (BMF-Tabelle, Mahlzeitenkürzungen 20/40/40, § 9 Abs. 4a EStG)"
+readme = "README.md"
+authors = [{ name = "DACH Digitalwerk", email = "dach.digitalwerk@gmail.com" }]
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business :: Financial :: Accounting",
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+dach-ausland = "auslandsreise_dach.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
